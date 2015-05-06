@@ -1,0 +1,62 @@
+<head>
+  <title>quote</title>
+</head>
+
+<body>
+  {{> modal}}
+</body>
+
+<template name="modal">
+  {{> Template.dynamic template=modal}}
+</template>
+
+<template name="welcome">
+  <h1>Welcome to Quote.</h1>
+  <p>Quote let you share your favorites memes you have with your friends. That simple.</p>
+  {{> loginButtons}}
+</template>
+
+<template name="quotes">
+  <p>here are quotes</p>
+  {{#each quotes}}
+    <p>quote {{quote}}</p>
+  {{/each}}
+  <a class="add" href="#">add</a>
+</template>
+
+<template name="add">
+  <a class="back" href="#">back</a>
+  <a class="next" href="#">next</a>
+  <input class="quote" type="text" placeholder="Quote">
+</template>
+
+<template name="who">
+  <a class="back" href="#">back</a>
+  <a class="next" href="#">next</a>
+  {{#each facebookUsers}}
+    <ul>
+      <li class="select">user {{facebook.name}}</li>
+    </ul>
+  {{/each}}
+</template>
+
+<template name="groups">
+  <a class="back" href="#">back</a>
+  <a class="next" href="#">next</a>
+  {{#each groups}}
+    <p>group {{name}}</p>
+  {{/each}}
+  <a class="create" href="#">Create a new group</a>
+</template>
+
+<template name="create">
+  <a class="back" href="#">back</a>
+  <a class="next" href="#">next</a>
+  <input class="quote" type="text" placeholder="Group name">
+  {{#each facebookUsers}}
+    <ul>
+      <li class="select">user {{facebook.name}} {{#if selected}}X{{/if}}</li>
+    </ul>
+  {{/each}}
+</template>
+
