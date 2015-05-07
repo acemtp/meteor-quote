@@ -1,9 +1,10 @@
 
 Quotes = new Mongo.Collection('quotes');
-FacebookUsers = new Mongo.Collection('facebookUsers');
 Groups = new Mongo.Collection('groups');
 
 if (Meteor.isClient) {
+
+  Meteor.subscribe('userData');
 
   Session.setDefault('modal', 'welcome');
 
@@ -58,8 +59,8 @@ if (Meteor.isClient) {
   //
 
   Template.who.helpers({
-    facebookUsers: function() {
-      return FacebookUsers.find({ userId: Meteor.userId() }, { sort: { createdAt: -1 } });
+    users: function() {
+      return Meteor.users.find({ _id: { $in: Meteor.user().friendIds } }, { sort: { 'profile.name': 1 } });
     },
   });
 
@@ -126,7 +127,7 @@ if (Meteor.isClient) {
 
       var gs = Session.get('groupSelect') || [];
 // XXX refaire les groupes avec des listes d id meteor
-      Groups.insert({ userId: Meteor.userId(), gs });      
+//      Groups.insert({ userId: Meteor.userId(), gs });      
 
       Session.set('modal', 'groups');
     },
@@ -151,6 +152,15 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 
+  Meteor.publish('userData', function () {
+    if (this.userId) {
+      return Meteor.users.find({ _id: this.userId },
+                               { fields: { friendIds: 1 } });
+    } else {
+      this.ready();
+    }
+  });
+
   Accounts.onLogin(function (cnx) {
     console.log('login', cnx);
 
@@ -165,11 +175,13 @@ if (Meteor.isServer) {
     console.log('res', res);
 
     _.each(res.data.data, function (user) {
-      console.log('user found', user);
-      if(!FacebookUsers.findOne({ userId: cnx.user._id, 'facebook.id': user.id })) {
-        console.log('insert facebook user', cnx.user._id, user);
-        FacebookUsers.insert({ userId: cnx.user._id, facebook: user });
-      }
+      console.log('user found from facebook api', user);
+
+      var friend = Meteor.users.findOne({ 'services.facebook.id': user.id });
+      if(!friend) return console.log('friend not found in meteor users', user);
+
+      Meteor.users.update(cnx.user._id, { $addToSet: { friendIds: friend._id } });
+      Meteor.users.update(friend._id, { $addToSet: { friendIds: cnx.user._id } });
     });
 
   });
