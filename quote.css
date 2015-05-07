@@ -1,1 +1,68 @@
 /* CSS declarations go here */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.toolbar {
+  width: 100%;
+  clear: both;
+  height: 40px;
+  background: #C58047;
+  color: white;
+  box-shadow: 0px 2px 17px #c58047;
+}
+.toolbar a, .toolbar a:hover, .toolbar a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.toolbar * {
+  padding: 10px;
+}
+
+.toolbar .left, .toolbar .back {
+  float: left;
+}
+
+.toolbar .right, .toolbar .next {
+  float: right;
+}
+
+div.welcome {
+  margin: 15px;
+}
+
+div.add input {
+  height: 300px
+}
+
+div.quotes div.quote {
+  display: block;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  height: 200px;
+  color: white;
+  box-shadow: 1px 1px 8px black;
+  background-color: rgb(85, 200, 200);
+}
+div.quotes div.quote:nth-child(2n+1) {
+  background-color: rgb(255, 148, 255);
+}
+
+div.quotes div.quote:nth-child(3n) {
+  background-color: rgb(255, 127, 89);
+}
+
+div.quotes div.quote:nth-child(5n+2) {
+  background-color: rgb(139, 219, 139);
+}
+
+div.quotes div.quote:nth-child(7n) {
+  background-color: rgb(249, 195, 96);
+}
+div.quotes div.quote p {
+  text-align: center;
+}
