@@ -69,9 +69,11 @@ body {
 
 .quotes .quote {
   display: block;
+  padding: 0;
   margin-bottom: 8px;
   height: 250px;
   color: white;
+  position: relative;
 }
 
 .quotes .quote:nth-child(3n+1) {
@@ -108,9 +110,9 @@ body {
   font-size: 12px;
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 8px;
-  position: relative;
-  bottom: 0;
-  right: 0;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
   padding: 5px;
 }
 
