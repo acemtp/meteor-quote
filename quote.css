@@ -139,16 +139,63 @@ body {
   font-size: 46px;
 }
 
+/* who */
+
+.who {
+  padding-top: 40px;
+}
+
+.who .search {
+  margin: 5px;
+  padding: 5px;
+  width: 95%;
+  background-color: #F3F3F3;
+  color: #BDBDBD;
+  text-align: center;
+  border: 0;
+  border-radius: 3px;
+}
+
+.who h2 {
+  background-color: #F1FBFC;
+  color: #A3E4EA;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding: 5px 10px;
+  margin: 0;
+}
+
+.who .user {
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+  font-weight: bold;
+  border-bottom: 2px #FAFAFA solid;
+}
+
+.who .user img {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 40px;
+}
+
+.who .user .name {
+  position: relative;
+  top: -25px;
+}
+
 /* */
 
-
 .toolbar {
-  width: 100%;
   clear: both;
   height: 40px;
   background-color: #71D6E0;
   color: white;
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .toolbar a, .toolbar a:hover, .toolbar a:visited {
@@ -171,7 +218,6 @@ body {
 }
 .toolbar div {
   width: 60%;
-  font-weight: bold;
   text-align: center;
   margin-top: 10px;
   float: left;

@@ -76,11 +76,17 @@
     <div>Who said that?</div>
     <a class="next" href="#"><i class="fa fa-check"></i></a>
   </div>
-  {{#each facebookUsers}}
-    <ul>
-      <li class="select">user {{facebook.name}}</li>
-    </ul>
+  <input type="text" class="search" placeholder="Search for a friend...">
+  <h2>Facebook Friends</h2>
+  {{#each users}}
+    <div class="user"><img src="http://placehold.it/100x100"><span class="name">{{profile.name}}</span></div>
   {{/each}}
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
 </template>
 
 <template name="groups">

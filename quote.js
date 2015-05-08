@@ -17,7 +17,7 @@ if (Meteor.isClient) {
   Accounts.onLogin(function () {
     console.log('logged');
     Session.set('modal', 'quotes');
-  Session.set('modal', 'who');
+Session.set('modal', 'who');
   });
 
   Template.modal.helpers({
@@ -70,7 +70,9 @@ if (Meteor.isClient) {
 
   Template.who.helpers({
     users: function() {
-      return Meteor.users.find({ _id: { $in: Meteor.user().friendIds } }, { sort: { 'profile.name': 1 } });
+      var me = Meteor.user();
+      if(!me || !me.friendIds) return;
+      return Meteor.users.find({ _id: { $in: me.friendIds } }, { sort: { 'profile.name': 1 } });
     },
   });
 
