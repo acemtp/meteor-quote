@@ -17,6 +17,7 @@ if (Meteor.isClient) {
   Accounts.onLogin(function () {
     console.log('logged');
     Session.set('modal', 'quotes');
+//Session.set('modal', 'groups');
   });
 
   Template.modal.helpers({
@@ -29,7 +30,6 @@ if (Meteor.isClient) {
 
   Template.welcome.events({
     'click .login': function () {
-      console.log('dsf');
       Meteor.loginWithFacebook();
     }
   });
@@ -40,13 +40,34 @@ if (Meteor.isClient) {
     quotes: function () {
       return Quotes.find({}, { sort: { createdAt: -1 } });
     },
+    username: function (userId) {
+      console.log('user', userId, this);
+      var user = Meteor.users.findOne(userId);
+      if(!user) return 'Anonymous';
+      console.log('user', user);
+      return user.profile.name;
+    },
+    loveCount: function () {
+      return this.loverIds.length;
+    },
+    loved: function () {
+      return _.indexOf(this.loverIds, Meteor.userId()) !== -1;
+    },
   });
 
   Template.quotes.events({
-    'click .add': function () {
+    'click .addbtn': function () {
       console.log('add');
       Session.set('modal', 'add');
-    }
+    },
+    'click .vote': function () {
+      console.log('vote', this);
+      if(_.indexOf(this.loverIds, Meteor.userId()) === -1) {
+        Quotes.update(this._id, { $addToSet: { loverIds: Meteor.userId() } });
+      } else {
+        Quotes.update(this._id, { $pull: { loverIds: Meteor.userId() } });
+      }
+    },
   });
 
   //
@@ -63,6 +84,10 @@ if (Meteor.isClient) {
 
       Session.set('modal', 'who');
     }
+  });
+
+  Template.add.onRendered(function () {
+    $('.quote').focus();
   });
 
   //
@@ -84,10 +109,10 @@ if (Meteor.isClient) {
       console.log('next');
       Session.set('modal', 'groups');
     },
-    'click .select': function () {
+    'click .user': function () {
       console.log('select', this);
 
-      Session.set('quoteWho', this.facebook.name);
+      Session.set('quoteBy', this._id);
 
       Session.set('modal', 'groups');
     }
@@ -110,6 +135,19 @@ if (Meteor.isClient) {
       console.log('next');
       Session.set('modal', 'groups');
     },
+    // XXX mettre la bonne classe lié au group plutot que <p>
+    'click p': function () {
+      var quote = Session.get('quote');
+      var quoteBy = Session.get('quoteBy');
+
+      console.log('select', quote, quoteBy, this);
+
+      Quotes.insert({ createdBy: Meteor.userId(), createdAt: new Date(), quote: quote, quoteBy: quoteBy, loverIds: [] });
+
+      Session.set('quote', '');
+      Session.set('quoteBy', '');
+      Session.set('modal', 'quotes');
+    },
     'click .create': function () {
       console.log('create');
       Session.set('modal', 'create');
@@ -119,11 +157,12 @@ if (Meteor.isClient) {
   //
 
   Template.create.helpers({
-    facebookUsers: function () {
-      return FacebookUsers.find({ userId: Meteor.userId() }, { sort: { createdAt: -1 } });
+    users: function() {
+      var me = Meteor.user();
+      if(!me || !me.friendIds) return;
+      return Meteor.users.find({ _id: { $in: me.friendIds } }, { sort: { 'profile.name': 1 } });
     },
     selected: function () {
-      console.log('///', _.indexOf(Session.get('groupSelect'), this._id));
       return _.indexOf(Session.get('groupSelect'), this._id) >= 0;
     }
   });
@@ -131,18 +170,20 @@ if (Meteor.isClient) {
   Template.create.events({
     'click .back': function () {
       console.log('back');
+      Session.set('groupSelect', []);
       Session.set('modal', 'groups');
     },
     'click .next': function () {
-      console.log('next');
-
       var gs = Session.get('groupSelect') || [];
-// XXX refaire les groupes avec des listes d id meteor
-//      Groups.insert({ userId: Meteor.userId(), gs });      
+      var name = $('.groupname').val();
+      console.log('next', name, gs);
 
+      Groups.insert({ createdBy: Meteor.userId(), createdAt: new Date(), name: name, userIds: gs });
+
+      Session.set('groupSelect', []);
       Session.set('modal', 'groups');
     },
-    'click .select': function () {
+    'click .user': function () {
       console.log('select', this);
 
       var gs = Session.get('groupSelect') || [];
@@ -159,10 +200,6 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-
   Meteor.publish('userData', function () {
     if (this.userId) {
       return Meteor.users.find({ _id: this.userId },

@@ -1,18 +1,18 @@
 @font-face {
-    font-family: GothamRounded;
-    src: url(Gotham-Rounded-Medium_21022.ttf);
+  font-family: GothamRounded;
+  src: url(Gotham-Rounded-Medium_21022.ttf);
 }
 
 @font-face {
-    font-family: GothamRounded;
-    src: url(Gotham-Rounded-Bold_21016.ttf);
-    font-weight: bold;
+  font-family: GothamRounded;
+  src: url(Gotham-Rounded-Bold_21016.ttf);
+  font-weight: bold;
 }
 
 @font-face {
-    font-family: GothamRounded;
-    src: url(Gotham-Rounded-Light_21020.ttf);
-    font-weight: lighter;
+  font-family: GothamRounded;
+  src: url(Gotham-Rounded-Light_21020.ttf);
+  font-weight: lighter;
 }
 
 body {
@@ -127,14 +127,15 @@ body {
   text-align: center;
   margin: 0;
   font-size: 12px;
-  background-color: rgba(255, 255, 255, 0.7);
+  /*background-color: rgba(255, 255, 255, 0.7);*/
+  background-color: rgba(237, 237, 237, 0.78);
   border-radius: 8px;
   position: fixed;
   bottom: 15px;
   right: 15px;
   width: 50px;
   height: 50px;
-  color: #C5C5C5;
+  color: white;
   border-radius: 40px;
   font-size: 46px;
 }
@@ -145,16 +146,6 @@ body {
   padding-top: 40px;
 }
 
-.who .search {
-  margin: 5px;
-  padding: 5px;
-  width: 95%;
-  background-color: #F3F3F3;
-  color: #BDBDBD;
-  text-align: center;
-  border: 0;
-  border-radius: 3px;
-}
 
 .who h2 {
   background-color: #F1FBFC;
@@ -166,24 +157,72 @@ body {
   margin: 0;
 }
 
-.who .user {
+
+/* create */
+
+.create {
+  padding-top: 40px;
+}
+
+.create .groupname {
+  padding: 15px 0;
+  margin: 0;
+  width: 100%;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border: 0;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+/* user */
+
+.search {
+  margin: 5px;
+  padding: 5px;
+  width: 95%;
+  background-color: #F3F3F3;
+  color: #BDBDBD;
+  text-align: center;
+  border: 0;
+  border-radius: 3px;
+}
+
+.user {
   padding: 10px 10px 10px 10px;
   margin: 10px 10px 10px 10px;
   font-weight: bold;
   border-bottom: 2px #FAFAFA solid;
 }
 
-.who .user img {
+.user img {
   width: 40px;
   height: 40px;
   padding: 10px;
   border-radius: 40px;
 }
 
-.who .user .name {
+.user .name {
   position: relative;
   top: -25px;
 }
+
+
+.user .check {
+  float: right;
+  top: 16px;
+  position: relative;
+  background-color: #E2F7F9;
+  color: white;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.user .active {
+  background-color: #71D6E0;
+}
+
 
 /* */
 
@@ -230,10 +269,21 @@ body {
 }
 
 .add textarea {
-  width: 100%;
+  width: 80%;
+  margin-left: 10%;
   height: 200px;
   background-color: transparent;
   color: white;
   text-align: center;
+  border: 0;
+  font-size: 26px;
+  font-weight: lighter;
+  font-family: "GothamRounded", Helvetica, Arial, sans-serif;
 
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }

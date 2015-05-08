@@ -28,37 +28,13 @@
 </template>
 
 <template name="quotes">
-  {{#if quotes.length}}
-    {{#each quotes}}
-      <div class="quote"><p>quote {{quote}}</p></div>
-    {{/each}}
-  {{else}}
-      <div class="quote">
-        <p>C'est pour parler à Brian. D'ailleurs il est in the kitchen.</p>
-        <p class="who">Jeremy Benaim</p>
-        <span class="vote active"><i class="fa fa-check"></i> 15</span>
-      </div>
-      <div class="quote">
-        <p>C'est pour parler à Brian. D'ailleurs il est in the kitchen.</p>
-        <p class="who">Jeremy Benaim</p>
-        <div class="vote"><i class="fa fa-check"></i> 15</div>
-      </div>
-      <div class="quote">
-        <p>C'est pour parler à Brian. D'ailleurs il est in the kitchen.</p>
-        <p class="who">Jeremy Benaim</p>
-        <div class="vote"><i class="fa fa-check"></i> 15</div>
-      </div>
-      <div class="quote">
-        <p>C'est pour parler à Brian. D'ailleurs il est in the kitchen.</p>
-        <p class="who">Jeremy Benaim</p>
-        <div class="vote"><i class="fa fa-check"></i> 15</div>
-      </div>
-      <div class="quote">
-        <p>C'est pour parler à Brian. D'ailleurs il est in the kitchen.</p>
-        <p class="who">Jeremy Benaim</p>
-        <div class="vote"><i class="fa fa-check"></i> 15</div>
-      </div>
-  {{/if}}
+  {{#each quotes}}
+    <div class="quote">
+      <p>{{quote}}</p>
+      <p class="who">{{username quoteBy}}</p>
+      <span class="vote {{#if loved}}active{{/if}}"><i class="fa fa-check"></i> {{loveCount}}</span>
+    </div>
+  {{/each}}
   <div class="addbtn">+</div>
 </template>
 
@@ -101,13 +77,25 @@
 </template>
 
 <template name="create">
-  <a class="back" href="#"><i class="fa fa-chevron-left"></i></a>
-  <a class="next" href="#"><i class="fa fa-check"></i></a>
-  <input class="quote" type="text" placeholder="Group name">
-  {{#each facebookUsers}}
-    <ul>
-      <li class="select">user {{facebook.name}} {{#if selected}}X{{/if}}</li>
-    </ul>
+  <div class="toolbar">
+    <a class="back" href="#"><i class="fa fa-chevron-left"></i></a>
+    <div>Create a new group</div>
+    <a class="next" href="#"><i class="fa fa-check"></i></a>
+  </div>
+  <input class="groupname" type="text" placeholder="Enter group name">
+  <input type="text" class="search" placeholder="Search for a friend...">
+  {{#each users}}
+    <div class="user">
+      <img src="http://placehold.it/100x100">
+      <span class="name">{{profile.name}}</span>
+      <span class="check {{#if selected}}active{{/if}}"><i class="fa fa-check"></i></span>
+    </div>
   {{/each}}
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
+  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
 </template>
 
