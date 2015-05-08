@@ -17,6 +17,7 @@ if (Meteor.isClient) {
   Accounts.onLogin(function () {
     console.log('logged');
     Session.set('modal', 'quotes');
+  Session.set('modal', 'who');
   });
 
   Template.modal.helpers({
