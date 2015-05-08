@@ -27,6 +27,15 @@ if (Meteor.isClient) {
 
   //
 
+  Template.welcome.events({
+    'click .login': function () {
+      console.log('dsf');
+      Meteor.loginWithFacebook();
+    }
+  });
+
+  //
+
   Template.quotes.helpers({
     quotes: function () {
       return Quotes.find({}, { sort: { createdAt: -1 } });

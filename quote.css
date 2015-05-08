@@ -1,9 +1,121 @@
-/* CSS declarations go here */
+@font-face {
+    font-family: GothamRounded;
+    src: url(Gotham-Rounded-Medium_21022.ttf);
+}
+
+@font-face {
+    font-family: GothamRounded;
+    src: url(Gotham-Rounded-Bold_21016.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: GothamRounded;
+    src: url(Gotham-Rounded-Light_21020.ttf);
+    font-weight: lighter;
+}
 
 body {
   margin: 0;
   padding: 0;
+  font-family: "GothamRounded", Helvetica, Arial, sans-serif;
 }
+
+/* welcome */
+
+.welcome {
+  margin: 0;
+}
+
+.welcome-header {
+  background-color: #FFDF81;
+  width: 100%;
+  height: 400px;
+}
+
+.welcome-body {
+  margin: 40px 35px 20px 35px;
+}
+
+.welcome h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.welcome p {
+  font-size: 13px;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+.welcome .hr {
+  background-color: #FAFAFA;
+  height: 2px;
+  margin: 30px 80px 30px 80px;
+}
+
+.welcome .login {
+  color: white;
+  background-color: #707BE0;
+  padding: 13px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+
+/* quotes */
+
+.quotes .quote {
+  display: block;
+  margin-bottom: 8px;
+  height: 250px;
+  color: white;
+}
+
+.quotes .quote:nth-child(3n+1) {
+  background-color: #71D6E0;
+}
+
+.quotes .quote:nth-child(3n+2) {
+  background-color: #FFB8CB;
+}
+
+.quotes .quote:nth-child(3n+3) {
+  background-color: #FFDF81;
+}
+
+.quotes .quote p {
+  text-align: center;
+  margin: 0;
+  padding: 50px 40px 10px 40px;
+  font-size: 25px;
+  line-height: 1.5em;
+}
+
+.quotes .quote .who {
+  text-align: center;
+  margin: 0;
+  padding: 10px 10px;
+  font-size: 12px;
+}
+
+.quotes .quote .vote {
+  float: right;
+  text-align: center;
+  margin: 0;
+  font-size: 12px;
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+}
+
+/* */
+
 
 .toolbar {
   width: 100%;
@@ -30,39 +142,6 @@ body {
   float: right;
 }
 
-div.welcome {
-  margin: 15px;
-}
-
 div.add input {
   height: 300px
-}
-
-div.quotes div.quote {
-  display: block;
-  width: 90%;
-  margin: auto;
-  margin-top: 20px;
-  height: 200px;
-  color: white;
-  box-shadow: 1px 1px 8px black;
-  background-color: rgb(85, 200, 200);
-}
-div.quotes div.quote:nth-child(2n+1) {
-  background-color: rgb(255, 148, 255);
-}
-
-div.quotes div.quote:nth-child(3n) {
-  background-color: rgb(255, 127, 89);
-}
-
-div.quotes div.quote:nth-child(5n+2) {
-  background-color: rgb(139, 219, 139);
-}
-
-div.quotes div.quote:nth-child(7n) {
-  background-color: rgb(249, 195, 96);
-}
-div.quotes div.quote p {
-  text-align: center;
 }
