@@ -220,7 +220,7 @@ if (Meteor.isServer) {
   Meteor.publish('quotes', function () {
     if (this.userId) {
       var user = Meteor.users.findOne(this.userId);
-      return Quotes.find({ quoteBy: { $in: user.friendIds } });
+      return Quotes.find({ quoteBy: { $in: user.friendIds || [] } });
     } else {
       this.ready();
     }
@@ -228,7 +228,7 @@ if (Meteor.isServer) {
   Meteor.publish('friends', function () {
     if (this.userId) {
       var user = Meteor.users.findOne(this.userId);
-      return Meteor.users.find({ _id: { $in: user.friendIds } });
+      return Meteor.users.find({ _id: { $in: user.friendIds || [] } });
     } else {
       this.ready();
     }
@@ -249,8 +249,11 @@ if (Meteor.isServer) {
         access_token: cnx.user.services.facebook.accessToken
       }
     };
+    // get image if not already
+    var res = HTTP.get('https://graph.facebook.com/me?fields=picture', options);
+    Meteor.users.update(cnx.user._id, { $set: { 'profile.picture': res.data.picture.data.url }});
 
-    var res = HTTP.get('https://graph.facebook.com/me/friends', options);
+    var res = HTTP.get('https://graph.facebook.com/me/friends?fields=picture,name,id', options);
 
     console.log('res', res);
 
