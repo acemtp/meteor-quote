@@ -5,6 +5,9 @@ Groups = new Mongo.Collection('groups');
 if (Meteor.isClient) {
 
   Meteor.subscribe('userData');
+  Meteor.subscribe('quotes');
+  Meteor.subscribe('friends');
+  Meteor.subscribe('groups');
 
   Session.setDefault('modal', 'welcome');
 
@@ -129,14 +132,13 @@ if (Meteor.isClient) {
   Template.groups.events({
     'click .back': function () {
       console.log('back');
-      Session.set('modal', 'add');
+      Session.set('modal', 'who');
     },
     'click .next': function () {
       console.log('next');
       Session.set('modal', 'groups');
     },
-    // XXX mettre la bonne classe lié au group plutot que <p>
-    'click p': function () {
+    'click .group': function () {
       var quote = Session.get('quote');
       var quoteBy = Session.get('quoteBy');
 
@@ -175,6 +177,8 @@ if (Meteor.isClient) {
     },
     'click .next': function () {
       var gs = Session.get('groupSelect') || [];
+      gs.push(Meteor.userId());
+
       var name = $('.groupname').val();
       console.log('next', name, gs);
 
@@ -204,6 +208,29 @@ if (Meteor.isServer) {
     if (this.userId) {
       return Meteor.users.find({ _id: this.userId },
                                { fields: { friendIds: 1 } });
+    } else {
+      this.ready();
+    }
+  });
+  Meteor.publish('quotes', function () {
+    if (this.userId) {
+      var user = Meteor.users.findOne(this.userId);
+      return Quotes.find({ quoteBy: { $in: user.friendIds } });
+    } else {
+      this.ready();
+    }
+  });
+  Meteor.publish('friends', function () {
+    if (this.userId) {
+      var user = Meteor.users.findOne(this.userId);
+      return Meteor.users.find({ _id: { $in: user.friendIds } });
+    } else {
+      this.ready();
+    }
+  });
+  Meteor.publish('groups', function () {
+    if (this.userId) {
+      return Groups.find({ userIds: this.userId });
     } else {
       this.ready();
     }

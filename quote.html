@@ -59,12 +59,6 @@
   {{#each users}}
     <div class="user"><img src="http://placehold.it/100x100"><span class="name">{{profile.name}}</span></div>
   {{/each}}
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
 </template>
 
 <template name="groups">
@@ -74,22 +68,14 @@
     <a class="next" href="#"><i class="fa fa-check"></i></a>
   </div>
   {{#each groups}}
-    <p>group {{name}}</p>
+    <div class="group">
+      <div class="img">
+        <img src="http://placehold.it/100x100" align="left" >
+      </div>
+      <span class="name">{{name}}</span>
+      <span class="group-list">Michael Lefebvre, Alex Delivret, Thibaud Elziere, Didier Forest and 4 more...</span>
+    </div>
   {{/each}}
-  <div class="group">
-    <div class="img">
-      <img src="http://placehold.it/100x100" align="left" >
-    </div>
-    <h2 class="group-name">eFounders</h2>
-    <span class="group-list">Michael Lefebvre, Alex Delivret, Thibaud Elziere, Didier Forest and 4 more...</span>
-  </div>
-  <div class="group">
-    <div class="img">
-      <img src="http://placehold.it/100x100" align="left" >
-    </div>
-    <h2 class="group-name">Friends</h2>
-    <span class="group-list">Michael Lefebvre, Alex Delivret, Thibaud Elziere, Didier Forest and 4 more...</span>
-  </div>
   <div class="create-body">
     <a class="create" href="#">Create a new group</a>
   </div>
@@ -110,11 +96,5 @@
       <span class="check {{#if selected}}active{{/if}}"><i class="fa fa-check"></i></span>
     </div>
   {{/each}}
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
-  <div class="user"><img src="http://placehold.it/100x100"><span class="name">Megan Ross</span></div>
 </template>
 

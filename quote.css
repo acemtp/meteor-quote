@@ -297,6 +297,17 @@ body {
 .groups .group {
   border-bottom: 2px #FAFAFA solid;
   padding: 20px 0;
+  height: 50px;
+}
+
+.groups .name {
+  font-weight: bold;
+  display: block;
+}
+
+.groups .group-list {
+  font-size: 12px;
+  color: #929292;
 }
 
 .groups .group .img {
@@ -325,10 +336,6 @@ body {
   height: 45px;
 }
 
-.groups .create-body {
-  padding: 20px;
-}
-
 .groups .create-body a.create {
   text-align: center;
   width: 100%;
@@ -339,5 +346,4 @@ body {
   color: #71D6E0;
   text-decoration: none;
   font-size: 16px;
-  font-weight: bold;
 }
