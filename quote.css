@@ -123,17 +123,20 @@ body {
   width: 100%;
   clear: both;
   height: 40px;
-  background: #C58047;
+  background-color: #71D6E0;
   color: white;
-  box-shadow: 0px 2px 17px #c58047;
-}
-.toolbar a, .toolbar a:hover, .toolbar a:visited {
-  color: white;
-  text-decoration: none;
+  position: fixed;
 }
 
-.toolbar * {
-  padding: 10px;
+.toolbar a, .toolbar a:hover, .toolbar a:visited {
+  width: 15%;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  margin-top: 9px;
+  font-size: 23px;
+  font-weight: lighter;
+  text-align: center;
 }
 
 .toolbar .left, .toolbar .back {
@@ -142,6 +145,13 @@ body {
 
 .toolbar .right, .toolbar .next {
   float: right;
+}
+.toolbar div {
+  width: 60%;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  float: left;
 }
 
 div.add input {
