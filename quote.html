@@ -92,12 +92,31 @@
 </template>
 
 <template name="groups">
-  <a class="back" href="#"><i class="fa fa-times"></i></a>
-  <a class="next" href="#"><i class="fa fa-check"></i></a>
+  <div class="toolbar">
+    <a class="back" href="#"><i class="fa fa-times"></i></a>
+    <div>Share with a group</div>
+    <a class="next" href="#"><i class="fa fa-check"></i></a>
+  </div>
   {{#each groups}}
     <p>group {{name}}</p>
   {{/each}}
-  <a class="create" href="#">Create a new group</a>
+  <div class="group">
+    <div class="img">
+      <img src="http://placehold.it/100x100" align="left" >
+    </div>
+    <h2 class="group-name">eFounders</h2>
+    <span class="group-list">Michael Lefebvre, Alex Delivret, Thibaud Elziere, Didier Forest and 4 more...</span>
+  </div>
+  <div class="group">
+    <div class="img">
+      <img src="http://placehold.it/100x100" align="left" >
+    </div>
+    <h2 class="group-name">Friends</h2>
+    <span class="group-list">Michael Lefebvre, Alex Delivret, Thibaud Elziere, Didier Forest and 4 more...</span>
+  </div>
+  <div class="create-body">
+    <a class="create" href="#">Create a new group</a>
+  </div>
 </template>
 
 <template name="create">
