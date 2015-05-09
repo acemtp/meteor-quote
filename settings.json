@@ -1,27 +1,2 @@
 {
-    "cordova": {
-        "com.phonegap.plugins.facebookconnect": {
-            "APP_ID": "991794777511408",
-            "APP_NAME": "Quote",
-            "secret": "c728a293995106259129694dd1bcab32"
-        }
-    },
-    "public": {
-        "facebook": {
-            "permissions": [
-                "public_profile",
-                "user_interests",
-                "user_activities",
-                "read_friendlists",
-                "user_friends",
-                "email"
-            ],
-            "profileFields": [
-                "name",
-                "gender",
-                "picture",
-                "location"
-            ]
-        }
-    }
 }

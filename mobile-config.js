@@ -38,11 +38,11 @@ App.launchScreens({
 App.setPreference('KeyboardDisplayRequiresUserAction', false);
 
 // Pass preferences for a particular PhoneGap/Cordova plugin
-
+/*
 App.configurePlugin('com.phonegap.plugins.facebookconnect', {
   APP_ID: '991794777511408',
   APP_NAME: 'Quote',
   API_KEY: 'c728a293995106259129694dd1bcab32'
 });
-
+*/
 App.accessRule('*');

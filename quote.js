@@ -13,7 +13,6 @@ if (Meteor.isClient) {
   Meteor.subscribe('friends');
   Meteor.subscribe('groups');
 
-//  Session.setDefault('modal', 'welcome');
   Session.setDefault('layoutSearch', '');
 
   Accounts.ui.config({
@@ -21,12 +20,6 @@ if (Meteor.isClient) {
       facebook: ['public_profile', 'email', 'user_friends'],
     }
   });
-
-/*  Accounts.onLogin(function () {
-    console.log('logged');
-    Session.set('modal', 'quotes');
-//Session.set('modal', 'who');
-  });*/
 
   Tracker.autorun(function () {
     var userId = Meteor.userId();
@@ -36,7 +29,7 @@ if (Meteor.isClient) {
     if(userId) {
       if(!modal || modal === 'welcome')
         Session.set('modal', 'quotes');
-    } else {
+    } else if(modal !== 'lb') {
       Session.set('modal', 'welcome');
     }
   });
@@ -54,11 +47,9 @@ if (Meteor.isClient) {
     'search #layoutSearch, change #layoutSearch, keyup #layoutSearch': function (e) {
       if(e.keyCode === 27 && $('#layoutSearch').val() === '') {
         $('#layoutSearch').blur();
-        return;
       }
       if(e.keyCode === 27) $('#layoutSearch').val('');
       var s = $('#layoutSearch').val();
-      //console.log('search is', s);
       Session.set('layoutSearch', s || '');
     },
   });
@@ -127,9 +118,6 @@ if (Meteor.isClient) {
   //
 
   Template.add.events({
-    'click .add': function () {
-      //$('').focus;
-    },
     'click .back': function () {
       console.log('back');
       Session.set('modal', 'quotes');
