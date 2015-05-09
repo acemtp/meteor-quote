@@ -187,7 +187,7 @@ Session.set('modal', 'who');
 
       console.log('select', quote, quoteBy, this);
 
-      Quotes.insert({ createdBy: Meteor.userId(), createdAt: new Date(), quote: quote, quoteBy: quoteBy, loverIds: [] });
+      Quotes.insert({ createdBy: Meteor.userId(), createdAt: new Date(), quote: quote, quoteBy: quoteBy, loverIds: [], groupId: this._id });
 
       Session.set('quote', '');
       Session.set('quoteBy', '');
@@ -252,9 +252,8 @@ if (Meteor.isServer) {
   });
   Meteor.publish('quotes', function () {
     if (this.userId) {
-      var user = Meteor.users.findOne(this.userId);
-      user.friendIds.push(this.userId);
-      return Quotes.find({ quoteBy: { $in: user.friendIds || [] } });
+      var userGroupIds = Groups.find({ userIds:  this.userId }).map(function (g) { return g._id; });
+      return Quotes.find({ groupId: { $in: userGroupIds } });
     } else {
       this.ready();
     }
