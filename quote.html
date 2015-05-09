@@ -68,8 +68,12 @@
   </div>
   {{#each groups}}
     <div class="group">
-      <div class="img">
-        <img src="http://placehold.it/100x100" align="left" >
+      <div class="image">
+        <div class="image-margin image-nb-{{images.length}}">
+          {{#each images}}
+            <img src="{{this}}" align="left" >
+          {{/each}}
+        </div>
       </div>
       <span class="name">{{name}}</span>
       <span class="group-list">{{members}}{{more}}</span>

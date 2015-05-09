@@ -336,30 +336,48 @@ html, body {
   color: #929292;
 }
 
-.groups .group .img {
+.groups .group .image {
   float: left;
   border: 4px solid #71D6E0;
   border-radius: 53px;
   padding: 4px;
   margin-right: 10px;
 }
-.groups .group:nth-child(3n+2) .img {
+.groups .group:nth-child(3n+2) .image {
   border-color: #71D6E0;
 }
 
-.groups .group:nth-child(3n+3) .img {
+.groups .group:nth-child(3n+3) .image {
   border-color: #FFB8CB;
 }
 
-.groups .group:nth-child(3n+4) .img {
+.groups .group:nth-child(3n+4) .image {
   border-color: #FFDF81;
 }
 
 
-.groups img {
+.groups .group .image-margin {
   border-radius: 45px;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  margin: 2px;
+}
+
+.groups .group .image-margin.image-nb-2 img:nth-child(1) {
+  margin-left: -50%;
+}
+.groups .group .image-margin.image-nb-2 img:nth-child(2) {
+  margin-right: -50%;
+}
+
+.groups .group .image-margin.image-nb-3 img:nth-child(1),
+.groups .group .image-margin.image-nb-3 img:nth-child(2) {
+  width: 50%;
+}
+
+.groups .group .image-margin.image-nb-4 img {
+  width: 50%;
 }
 
 .groups .create-body a.create {

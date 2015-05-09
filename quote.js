@@ -1,5 +1,4 @@
 // XXX search
-// XXX picturesgroups
 // XXX plugin facebook cordova
 
 
@@ -150,6 +149,11 @@ if (Meteor.isClient) {
     more: function () {
       return this.userIds.length <= 4 ? '' : ' and ' + (this.userIds.length - 4) + ' more...';
     },
+    images: function () {
+      return Meteor.users
+        .find({ _id: { $in: this.userIds }}, { limit: 4 })
+        .map(function (user) { return user.profile.picture; });
+    }
   });
 
   Template.groups.events({
