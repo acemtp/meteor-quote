@@ -1,5 +1,3 @@
-// XXX plugin facebook cordova
-
 
 Quotes = new Mongo.Collection('quotes');
 Groups = new Mongo.Collection('groups');
