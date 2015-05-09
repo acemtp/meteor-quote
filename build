@@ -1,0 +1,1 @@
+meteor build --server=http://qu.meteor.com ../quote_build
