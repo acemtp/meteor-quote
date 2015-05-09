@@ -1,10 +1,6 @@
-// XXX icone ios
 // XXX search
-// XXX picture sur mobile
-// XXX height 100%
 // XXX picturesgroups
 // XXX usernamegroups
-// XXX placeholder sur le add textarea
 // XXX ca poste la quote que dans un group (publish que les quotes dont on fait parti du groupe, un quote doit contenur un groupId et pas un quoteId)
 // XXX plugin facebook cordova
 
@@ -30,7 +26,7 @@ if (Meteor.isClient) {
   Accounts.onLogin(function () {
     console.log('logged');
     Session.set('modal', 'quotes');
-//Session.set('modal', 'groups');
+//Session.set('modal', 'add');
   });
 
   Template.modal.helpers({
@@ -75,7 +71,7 @@ if (Meteor.isClient) {
       console.log('add');
       Session.set('modal', 'add');
     },
-    'click .vote': function () {
+    'click .quote, click .vote': function () {
       console.log('vote', this);
       if(_.indexOf(this.loverIds, Meteor.userId()) === -1) {
         Quotes.update(this._id, { $addToSet: { loverIds: Meteor.userId() } });
@@ -91,6 +87,9 @@ if (Meteor.isClient) {
   //
 
   Template.add.events({
+    'click .add': function () {
+      //$('').focus;
+    },
     'click .back': function () {
       console.log('back');
       Session.set('modal', 'quotes');

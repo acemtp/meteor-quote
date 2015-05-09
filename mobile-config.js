@@ -2,7 +2,7 @@
 // the entire section is optional.
 App.info({
   id: 'com.efounders.quote',
-  name: 'quote',
+  name: 'Quote',
   description: 'Quote let you share your favorites memes you have with your friends. That simple.',
   author: 'eFounders',
   email: 'vianney@e-founders.com',
@@ -19,17 +19,22 @@ App.icons({
 });
 
 App.launchScreens({
-/*  'iphone': 'resources/iOS\\Resources\\splash\\Default.png',
+  'iphone': 'resources/iOS\\Resources\\splash\\Default.png',
   'iphone_2x': 'resources/iOS\\Resources\\splash\\Default@2x~iphone_640x960.png',
   'iphone5': 'resources/iOS\\Resources\\splash\\Default@2x~iphone_640x960.png',
   'iphone6': 'resources/iOS\\Resources\\splash\\Default@2x~iphone_640x960.png',
   'iphone6p_portrait': 'resources/iOS\\Resources\\splash\\Default@2x~iphone_640x960.png',
   'iphone6p_landscape': 'resources/iOS\\Resources\\splash\\Default@2x~iphone_640x960.png',
-*/});
+  'ipad_portrait': 'resources/iOS\\Resources\\splash\\Default-Portrait~ipad_768x1024.png',
+  'ipad_portrait_2x': 'resources/iOS\\Resources\\splash\\Default-Portrait~ipad_768x1024.png',
+  'ipad_landscape': 'resources/iOS\\Resources\\splash\\Default-Landscape~ipad_1024x748.png',
+  'ipad_landscape_2x': 'resources/iOS\\Resources\\splash\\Default-Landscape~ipad_1024x748.png',
+});
 
 // Set PhoneGap/Cordova preferences
 //App.setPreference('BackgroundColor', '0xff0000ff');
 //App.setPreference('HideKeyboardFormAccessoryBar', true);
+App.setPreference('KeyboardDisplayRequiresUserAction', false);
 
 // Pass preferences for a particular PhoneGap/Cordova plugin
 /*
