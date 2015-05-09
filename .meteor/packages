@@ -6,7 +6,8 @@
 
 meteor-platform
 insecure
-accounts-ui
 http
 fortawesome:fontawesome
 vicentealencar:cordova-fb
+jamielob:transitions
+accounts-ui-unstyled

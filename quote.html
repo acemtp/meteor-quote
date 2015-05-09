@@ -8,7 +8,7 @@
 </body>
 
 <template name="modal">
-  <div class="{{modal}}">
+  <div class="transitions-container">
     {{> Template.dynamic template=modal}}
   </div>
 </template>
@@ -18,12 +18,14 @@
 </template>
 
 <template name="welcome">
-  <div class="welcome-header"></div>
-  <div class="welcome-body">
-    <h1>Welcome to Quote.</h1>
-    <p>Quote let you share your favorites memes you have with your friends. That simple.</p>
-    <div class="hr"></div>
-    <div class="login">Connect with Facebook</div>
+  <div class="transitions-content welcome">
+    <div class="welcome-header"></div>
+    <div class="welcome-body">
+      <h1>Welcome to Quote.</h1>
+      <p>Quote let you share your favorites memes you have with your friends. That simple.</p>
+      <div class="hr"></div>
+      <div class="login">Connect with Facebook</div>
+    </div>
   </div>
 </template>
 
@@ -32,76 +34,88 @@
 </template>
 
 <template name="quotes">
-  {{#each quotes}}
-    <div class="quote">
-      <p>{{quote}}</p>
-      <p class="who">{{username quoteBy}}</p>
-      <span class="vote {{#if loved}}active{{/if}}"><i class="fa fa-check"></i> {{loveCount}}</span>
-    </div>
-  {{/each}}
-  <div class="addbtn">+</div>
+  <div class="transitions-content quotes">
+    {{#each quotes}}
+      <div class="quote">
+        <p>{{quote}}</p>
+        <p class="who">{{username quoteBy}}</p>
+        <span class="vote {{#if loved}}active{{/if}}"><i class="fa fa-check"></i> {{loveCount}}</span>
+      </div>
+    {{/each}}
+  </div>
   <div class="logout"><i class="fa fa-sign-out"></i></div>
+  <div class="addbtn">+</div>
 </template>
 
 <template name="add">
-  <div class="toolbar">
-    <a class="back" href="#"><i class="fa fa-chevron-left"></i></a>
-    <a class="next" href="#"><i class="fa fa-check"></i></a>
+  <div class="transitions-content add">
+    <div class="toolbar">
+      <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
+      <a class="next" href="#"><i class="fa fa-check"></i></a>
+    </div>
+    <textarea class="quote" placeholder="What is the quote?"></textarea>
   </div>
-  <textarea class="quote" placeholder="What is the quote?"></textarea>
 </template>
 
 <template name="who">
-  <div class="toolbar">
-    <a class="back" href="#"><i class="fa fa-chevron-left"></i></a>
-    <div>Who said that?</div>
-    <a class="next" href="#"><i class="fa fa-check"></i></a>
+  <div class="transitions-content who">
+    <div class="toolbar">
+      <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
+      <div>Who said that?</div>
+      <a class="next" href="#"><i class="fa fa-check"></i></a>
+    </div>
+    {{> search}}
+    <h2>Facebook Friends</h2>
+    {{#each users}}
+      <div class="user"><img src="{{profile.picture}}"><span class="name">{{profile.name}}</span></div>
+    {{/each}}
   </div>
-  {{> search}}
-  <h2>Facebook Friends</h2>
-  {{#each users}}
-    <div class="user"><img src="{{profile.picture}}"><span class="name">{{profile.name}}</span></div>
-  {{/each}}
 </template>
 
 <template name="groups">
-  <div class="toolbar">
-    <a class="back" href="#"><i class="fa fa-times"></i></a>
-    <div>Share with a group</div>
-    <a class="next" href="#"><i class="fa fa-check"></i></a>
-  </div>
-  {{#each groups}}
-    <div class="group">
-      <div class="image">
-        <div class="image-margin image-nb-{{images.length}}">
-          {{#each images}}
-            <img src="{{this}}" align="left" >
-          {{/each}}
-        </div>
-      </div>
-      <span class="name">{{name}}</span>
-      <span class="group-list">{{members}}{{more}}</span>
+  <div class="transitions-content groups">
+    <div class="toolbar">
+      <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
+      <div>Share with a group</div>
+      <a class="next" href="#"><i class="fa fa-check"></i></a>
     </div>
-  {{/each}}
-  <div class="create-body">
-    <a class="create" href="#">Create a new group</a>
+    <div class="groups-wrapper">
+      {{#each groups}}
+        <div class="group">
+          <div class="image">
+            <div class="image-margin image-nb-{{images.length}}">
+              {{#each images}}
+                <img src="{{this}}" align="left" >
+              {{/each}}
+            </div>
+          </div>
+          <span class="name">{{name}}</span>
+          <span class="group-list">{{members}}{{more}}</span>
+        </div>
+      {{/each}}
+      <div class="create-body">
+        <a class="create" href="#">Create a new group</a>
+      </div>
+    </div>
   </div>
 </template>
 
 <template name="create">
-  <div class="toolbar">
-    <a class="back" href="#"><i class="fa fa-chevron-left"></i></a>
-    <div>Create a new group</div>
-    <a class="next" href="#"><i class="fa fa-check"></i></a>
-  </div>
-  <input class="groupname" type="text" placeholder="Enter group name">
-  {{> search}}
-  {{#each users}}
-    <div class="user">
-      <img src="http://placehold.it/100x100">
-      <span class="name">{{profile.name}}</span>
-      <span class="check {{#if selected}}active{{/if}}"><i class="fa fa-check"></i></span>
+  <div class="transitions-content create">
+    <div class="toolbar">
+      <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-times"></i></a>
+      <div>Create a new group</div>
+      <a class="next" href="#"><i class="fa fa-check"></i></a>
     </div>
-  {{/each}}
+    <input class="groupname" type="text" placeholder="Enter group name">
+    {{> search}}
+    {{#each users}}
+      <div class="user">
+        <img src="http://placehold.it/100x100">
+        <span class="name">{{profile.name}}</span>
+        <span class="check {{#if selected}}active{{/if}}"><i class="fa fa-check"></i></span>
+      </div>
+    {{/each}}
+  </div>
 </template>
 

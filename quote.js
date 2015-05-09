@@ -3,6 +3,8 @@ Quotes = new Mongo.Collection('quotes');
 Groups = new Mongo.Collection('groups');
 
 if (Meteor.isClient) {
+  Transitions.transitionIn = 'slideLeftIn';
+  Transitions.transitionOut = 'slideLeftOut';
 
   Meteor.subscribe('userData');
   Meteor.autorun(function () {
@@ -142,7 +144,9 @@ if (Meteor.isClient) {
   });
 
   Template.add.onRendered(function () {
-    $('.quote').focus();
+    setTimeout(function () {
+      $('.quote').focus();
+    }, 900);
   });
 
   //

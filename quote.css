@@ -21,6 +21,9 @@ html, body {
   font-family: "GothamRounded", Helvetica, Arial, sans-serif;
   height:100%;
 }
+.transitions-container, .transitions-content {
+  height: 100%;
+}
 
 /* welcome */
 
@@ -130,7 +133,7 @@ html, body {
   color: #C5C5C5;
 }
 
-.quotes .addbtn {
+.addbtn {
   float: right;
   text-align: center;
   margin: 0;
@@ -147,7 +150,7 @@ html, body {
   font-size: 46px;
 }
 
-.quotes .logout {
+.logout {
   float: left;
   text-align: center;
   margin: 0;
@@ -332,8 +335,11 @@ html, body {
 /** groups **/
 
 .groups {
-  margin-top: 60px;
   padding: 0 20px;
+}
+
+.groups-wrapper {
+  margin-top: 60px;
 }
 
 .groups .group {
