@@ -36,6 +36,7 @@
     </div>
   {{/each}}
   <div class="addbtn">+</div>
+  <a href="#" class="logout">logout</a>
 </template>
 
 <template name="add">
@@ -57,7 +58,7 @@
   <input type="text" class="search" placeholder="Search for a friend...">
   <h2>Facebook Friends</h2>
   {{#each users}}
-    <div class="user"><img src="http://placehold.it/100x100"><span class="name">{{profile.name}}</span></div>
+    <div class="user"><img src="{{profile.picture}}"><span class="name">{{profile.name}}</span></div>
   {{/each}}
 </template>
 

@@ -1,7 +1,12 @@
+// XXX icone ios
 // XXX search
-// XXX pictures
+// XXX picture sur mobile
+// XXX height 100%
 // XXX picturesgroups
 // XXX usernamegroups
+// XXX placeholder sur le add textarea
+// XXX ca poste la quote que dans un group (publish que les quotes dont on fait parti du groupe, un quote doit contenur un groupId et pas un quoteId)
+// XXX plugin facebook cordova
 
 
 Quotes = new Mongo.Collection('quotes');
@@ -38,7 +43,9 @@ if (Meteor.isClient) {
 
   Template.welcome.events({
     'click .login': function () {
-      Meteor.loginWithFacebook();
+      Meteor.loginWithFacebook({
+        requestPermissions: ['public_profile', 'email', 'user_friends']
+      });
     }
   });
 
@@ -76,6 +83,9 @@ if (Meteor.isClient) {
         Quotes.update(this._id, { $pull: { loverIds: Meteor.userId() } });
       }
     },
+    'click .logout': function () {
+      Meteor.logout();
+    }
   });
 
   //
@@ -220,6 +230,7 @@ if (Meteor.isServer) {
   Meteor.publish('quotes', function () {
     if (this.userId) {
       var user = Meteor.users.findOne(this.userId);
+      user.friendIds.push(this.userId);
       return Quotes.find({ quoteBy: { $in: user.friendIds || [] } });
     } else {
       this.ready();
@@ -253,15 +264,15 @@ if (Meteor.isServer) {
     var res = HTTP.get('https://graph.facebook.com/me?fields=picture', options);
     Meteor.users.update(cnx.user._id, { $set: { 'profile.picture': res.data.picture.data.url }});
 
-    var res = HTTP.get('https://graph.facebook.com/me/friends?fields=picture,name,id', options);
+    var res = HTTP.get('https://graph.facebook.com/me/friends', options);
 
-    console.log('res', res);
+    console.log('***************** res', res);
 
     _.each(res.data.data, function (user) {
-      console.log('user found from facebook api', user);
+      console.log('----------------- user found from facebook api', user);
 
       var friend = Meteor.users.findOne({ 'services.facebook.id': user.id });
-      if(!friend) return console.log('friend not found in meteor users', user);
+      if(!friend) return console.log('############### friend not found in meteor users', user);
 
       Meteor.users.update(cnx.user._id, { $addToSet: { friendIds: friend._id } });
       Meteor.users.update(friend._id, { $addToSet: { friendIds: cnx.user._id } });
