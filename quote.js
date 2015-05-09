@@ -13,7 +13,7 @@ if (Meteor.isClient) {
   Meteor.subscribe('friends');
   Meteor.subscribe('groups');
 
-  Session.setDefault('modal', 'welcome');
+//  Session.setDefault('modal', 'welcome');
   Session.setDefault('layoutSearch', '');
 
   Accounts.ui.config({
@@ -22,10 +22,23 @@ if (Meteor.isClient) {
     }
   });
 
-  Accounts.onLogin(function () {
+/*  Accounts.onLogin(function () {
     console.log('logged');
     Session.set('modal', 'quotes');
-Session.set('modal', 'who');
+//Session.set('modal', 'who');
+  });*/
+
+  Tracker.autorun(function () {
+    var userId = Meteor.userId();
+    var modal = Session.get('modal');
+    console.log('change', userId);
+
+    if(userId) {
+      if(!modal || modal === 'welcome')
+        Session.set('modal', 'quotes');
+    } else {
+      Session.set('modal', 'welcome');
+    }
   });
 
   Template.modal.helpers({

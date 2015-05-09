@@ -9,4 +9,4 @@ insecure
 accounts-ui
 http
 fortawesome:fontawesome
-accounts-facebook
+vicentealencar:cordova-fb
