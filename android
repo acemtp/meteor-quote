@@ -1,2 +1,1 @@
-#!/bin/bash
-meteor run android-device  --mobile-server qu.meteor.com
+meteor run android-device --mobile-server qu.meteor.com --settings settings.json --verbose

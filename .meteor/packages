@@ -9,4 +9,6 @@ insecure
 accounts-ui
 http
 fortawesome:fontawesome
-vicentealencar:cordova-fb
+#vicentealencar:cordova-fb #ios ok android ko
+#particle4dev:cordova-fb #android ko
+accounts-facebook
