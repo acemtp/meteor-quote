@@ -24,13 +24,8 @@ if (Meteor.isClient) {
 
   Accounts.onLogin(function () {
     console.log('logged');
-<<<<<<< HEAD
     Session.set('modal', 'quotes');
 //Session.set('modal', 'add');
-=======
-    //Session.set('modal', 'quotes');
-    Session.set('modal', 'groups');
->>>>>>> e44939951bd4ca0432e9ab574c6df62a3fe12804
   });
 
   Template.modal.helpers({
