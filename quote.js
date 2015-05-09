@@ -1,6 +1,5 @@
 // XXX search
 // XXX picturesgroups
-// XXX usernamegroups
 // XXX ca poste la quote que dans un group (publish que les quotes dont on fait parti du groupe, un quote doit contenur un groupId et pas un quoteId)
 // XXX plugin facebook cordova
 
@@ -25,8 +24,13 @@ if (Meteor.isClient) {
 
   Accounts.onLogin(function () {
     console.log('logged');
+<<<<<<< HEAD
     Session.set('modal', 'quotes');
 //Session.set('modal', 'add');
+=======
+    //Session.set('modal', 'quotes');
+    Session.set('modal', 'groups');
+>>>>>>> e44939951bd4ca0432e9ab574c6df62a3fe12804
   });
 
   Template.modal.helpers({
@@ -140,6 +144,15 @@ if (Meteor.isClient) {
   Template.groups.helpers({
     groups: function() {
       return Groups.find({}, { sort: { createdAt: -1 } });
+    },
+    members: function () {
+      return Meteor.users
+        .find({ _id: { $in: this.userIds }}, { limit: 4 })
+        .map(function (user) { return user.profile.name; })
+        .join(', ');
+    },
+    more: function () {
+      return this.userIds.length <= 4 ? '' : ' and ' + (this.userIds.length - 4) + ' more...';
     },
   });
 
