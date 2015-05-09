@@ -1,4 +1,3 @@
-// XXX search
 // XXX picturesgroups
 // XXX ca poste la quote que dans un group (publish que les quotes dont on fait parti du groupe, un quote doit contenur un groupId et pas un quoteId)
 // XXX plugin facebook cordova
@@ -15,6 +14,7 @@ if (Meteor.isClient) {
   Meteor.subscribe('groups');
 
   Session.setDefault('modal', 'welcome');
+  Session.setDefault('layoutSearch', '');
 
   Accounts.ui.config({
     requestPermissions: {
@@ -25,7 +25,7 @@ if (Meteor.isClient) {
   Accounts.onLogin(function () {
     console.log('logged');
     Session.set('modal', 'quotes');
-//Session.set('modal', 'add');
+Session.set('modal', 'who');
   });
 
   Template.modal.helpers({
@@ -33,6 +33,33 @@ if (Meteor.isClient) {
       return Session.get('modal');
     },
   });
+
+
+  //
+
+  Template.search.events({
+    'search #layoutSearch, change #layoutSearch, keyup #layoutSearch': function (e) {
+      if(e.keyCode === 27 && $('#layoutSearch').val() === '') {
+        $('#layoutSearch').blur();
+        return;
+      }
+      if(e.keyCode === 27) $('#layoutSearch').val('');
+      var s = $('#layoutSearch').val();
+      //console.log('search is', s);
+      Session.set('layoutSearch', s || '');
+    },
+  });
+
+  Template.registerHelper('users', function () {
+    var me = Meteor.user();
+    if(!me || !me.friendIds) return;
+
+    var filters = {};
+    var s = Session.get('layoutSearch');
+    if(s) filters['profile.name'] = { $regex: s, $options: "i" };
+    return Meteor.users.find(filters, { sort: { 'profile.name': 1 } });
+  });
+
 
   //
 
@@ -43,6 +70,7 @@ if (Meteor.isClient) {
       });
     }
   });
+
 
   //
 
@@ -108,13 +136,6 @@ if (Meteor.isClient) {
 
   //
 
-  Template.who.helpers({
-    users: function() {
-      var me = Meteor.user();
-      if(!me || !me.friendIds) return;
-      return Meteor.users.find({ _id: { $in: me.friendIds } }, { sort: { 'profile.name': 1 } });
-    },
-  });
 
   Template.who.events({
     'click .back': function () {
@@ -181,11 +202,6 @@ if (Meteor.isClient) {
   //
 
   Template.create.helpers({
-    users: function() {
-      var me = Meteor.user();
-      if(!me || !me.friendIds) return;
-      return Meteor.users.find({ _id: { $in: me.friendIds } }, { sort: { 'profile.name': 1 } });
-    },
     selected: function () {
       return _.indexOf(Session.get('groupSelect'), this._id) >= 0;
     }

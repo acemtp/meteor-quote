@@ -27,6 +27,10 @@
   </div>
 </template>
 
+<template name="search">
+  <input type="text" id="layoutSearch" class="search" placeholder="Search for a friend...">
+</template>
+
 <template name="quotes">
   {{#each quotes}}
     <div class="quote">
@@ -53,7 +57,7 @@
     <div>Who said that?</div>
     <a class="next" href="#"><i class="fa fa-check"></i></a>
   </div>
-  <input type="text" class="search" placeholder="Search for a friend...">
+  {{> search}}
   <h2>Facebook Friends</h2>
   {{#each users}}
     <div class="user"><img src="{{profile.picture}}"><span class="name">{{profile.name}}</span></div>
@@ -87,7 +91,7 @@
     <a class="next" href="#"><i class="fa fa-check"></i></a>
   </div>
   <input class="groupname" type="text" placeholder="Enter group name">
-  <input type="text" class="search" placeholder="Search for a friend...">
+  {{> search}}
   {{#each users}}
     <div class="user">
       <img src="http://placehold.it/100x100">
