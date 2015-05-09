@@ -4,11 +4,13 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
-insecure
-accounts-ui
-http
-fortawesome:fontawesome
 #vicentealencar:cordova-fb #ios ok android ko
 #particle4dev:cordova-fb #android ko
+
+meteor-platform
+insecure
+http
+fortawesome:fontawesome
 accounts-facebook
+jamielob:transitions
+accounts-ui-unstyled
