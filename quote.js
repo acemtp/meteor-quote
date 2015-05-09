@@ -271,7 +271,7 @@ if (Meteor.isServer) {
     var res = HTTP.get('https://graph.facebook.com/me?fields=picture', options);
     Meteor.users.update(cnx.user._id, { $set: { 'profile.picture': res.data.picture.data.url }});
 
-    var res = HTTP.get('https://graph.facebook.com/me/friends', options);
+    res = HTTP.get('https://graph.facebook.com/me/friends', options);
 
     console.log('***************** res', res);
 
