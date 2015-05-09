@@ -1,6 +1,5 @@
 // XXX search
 // XXX picturesgroups
-// XXX ca poste la quote que dans un group (publish que les quotes dont on fait parti du groupe, un quote doit contenur un groupId et pas un quoteId)
 // XXX plugin facebook cordova
 
 
@@ -10,7 +9,9 @@ Groups = new Mongo.Collection('groups');
 if (Meteor.isClient) {
 
   Meteor.subscribe('userData');
-  Meteor.subscribe('quotes');
+  Meteor.autorun(function () {
+    Meteor.subscribe('quotes', Groups.find().count());
+  });
   Meteor.subscribe('friends');
   Meteor.subscribe('groups');
 
