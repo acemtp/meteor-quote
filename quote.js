@@ -1,5 +1,3 @@
-// XXX picturesgroups
-// XXX ca poste la quote que dans un group (publish que les quotes dont on fait parti du groupe, un quote doit contenur un groupId et pas un quoteId)
 // XXX plugin facebook cordova
 
 
@@ -9,7 +7,9 @@ Groups = new Mongo.Collection('groups');
 if (Meteor.isClient) {
 
   Meteor.subscribe('userData');
-  Meteor.subscribe('quotes');
+  Meteor.autorun(function () {
+    Meteor.subscribe('quotes', Groups.find().count());
+  });
   Meteor.subscribe('friends');
   Meteor.subscribe('groups');
 
@@ -183,6 +183,11 @@ if (Meteor.isClient) {
     more: function () {
       return this.userIds.length <= 4 ? '' : ' and ' + (this.userIds.length - 4) + ' more...';
     },
+    images: function () {
+      return Meteor.users
+        .find({ _id: { $in: this.userIds }}, { limit: 4 })
+        .map(function (user) { return user.profile.picture; });
+    }
   });
 
   Template.groups.events({
