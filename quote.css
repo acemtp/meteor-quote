@@ -133,7 +133,7 @@ html, body {
   color: #C5C5C5;
 }
 
-.addbtn {
+.toolbar .addbtn {
   float: right;
   text-align: center;
   margin: 0;
@@ -150,7 +150,7 @@ html, body {
   font-size: 46px;
 }
 
-.logout {
+.toolbar .logout {
   float: left;
   text-align: center;
   margin: 0;
@@ -168,11 +168,6 @@ html, body {
 }
 
 /* who */
-
-.who {
-  padding-top: 60px;
-}
-
 
 .who h2 {
   background-color: #F1FBFC;
@@ -252,6 +247,10 @@ html, body {
 
 
 /* */
+.scrollable {
+  overflow-y: scroll;
+  height: 100%;
+}
 
 .toolbar {
   clear: both;
@@ -260,9 +259,16 @@ html, body {
   background-color: #71D6E0;
   color: white;
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
+}
+
+.toolbar .top {
+  top: 0;
+}
+
+.toolbar .bottom {
+  bottom: 0;
 }
 
 .toolbar a, .toolbar a:hover, .toolbar a:visited {

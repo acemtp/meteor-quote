@@ -35,21 +35,25 @@
 
 <template name="quotes">
   <div class="transitions-content quotes">
-    {{#each quotes}}
-      <div class="quote">
-        <p>{{quote}}</p>
-        <p class="who">{{username quoteBy}}</p>
-        <span class="vote {{#if loved}}active{{/if}}"><i class="fa fa-check"></i> {{loveCount}}</span>
-      </div>
-    {{/each}}
+    <div class="scrollable">
+      {{#each quotes}}
+        <div class="quote">
+          <p>{{quote}}</p>
+          <p class="who">{{username quoteBy}}</p>
+          <span class="vote {{#if loved}}active{{/if}}"><i class="fa fa-check"></i> {{loveCount}}</span>
+        </div>
+      {{/each}}
+    </div>
+    <div class="toolbar bottom">
+      <div class="logout left"><i class="fa fa-sign-out"></i></div>
+      <div class="addbtn right">+</div>
+    </div>
   </div>
-  <div class="logout"><i class="fa fa-sign-out"></i></div>
-  <div class="addbtn">+</div>
 </template>
 
 <template name="add">
   <div class="transitions-content add">
-    <div class="toolbar">
+    <div class="toolbar top">
       <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
       <a class="next" href="#"><i class="fa fa-check"></i></a>
     </div>
@@ -59,22 +63,25 @@
 
 <template name="who">
   <div class="transitions-content who">
-    <div class="toolbar">
+    <div class="toolbar top">
       <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
       <div>Who said that?</div>
       <a class="next" href="#"><i class="fa fa-check"></i></a>
     </div>
-    {{> search}}
-    <h2>Facebook Friends</h2>
-    {{#each users}}
-      <div class="user"><img src="{{profile.picture}}"><span class="name">{{profile.name}}</span></div>
-    {{/each}}
+    <div class="scrollable">
+      {{> search}}
+      <h2>Facebook Friends</h2>
+      {{#each users}}
+        <div class="user"><img src="{{profile.picture}}"><span class="name">{{profile.name}}</span></div>
+      {{/each}}
+    </div>
   </div>
+
 </template>
 
 <template name="groups">
   <div class="transitions-content groups">
-    <div class="toolbar">
+    <div class="toolbar top">
       <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
       <div>Share with a group</div>
       <a class="next" href="#"><i class="fa fa-check"></i></a>
@@ -102,7 +109,7 @@
 
 <template name="create">
   <div class="transitions-content create">
-    <div class="toolbar">
+    <div class="toolbar top">
       <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-times"></i></a>
       <div>Create a new group</div>
       <a class="next" href="#"><i class="fa fa-check"></i></a>
