@@ -139,6 +139,15 @@ if (Meteor.isClient) {
 
   //
 
+  Template.who.helpers({
+    lastQuoted: function() {
+      var quoteByIds = Quotes
+        .find({ createdBy: Meteor.userId()}, { sort: { createdAt: -1, limit: 3 } })
+        .map(function (q) { return q.quoteBy; });
+
+      return quoteByIds && Meteor.users.find({ _id: { $in: quoteByIds }}) || [];
+    }
+  });
 
   Template.who.events({
     'click .back': function () {
