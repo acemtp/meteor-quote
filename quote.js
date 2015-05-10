@@ -162,7 +162,7 @@ if (Meteor.isClient) {
 
   Template.groups.helpers({
     groups: function() {
-      return Groups.find({}, { sort: { createdAt: -1 } });
+      return Groups.find({}, { sort: { name: 1, createdAt: -1 } });
     },
     members: function () {
       return Meteor.users
