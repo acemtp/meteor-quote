@@ -145,7 +145,13 @@ if (Meteor.isClient) {
         .find({ createdBy: Meteor.userId()}, { sort: { createdAt: -1, limit: 3 } })
         .map(function (q) { return q.quoteBy; });
 
-      return quoteByIds && Meteor.users.find({ _id: { $in: quoteByIds }}) || [];
+      if (!quoteByIds) return;
+
+      var filters = { _id: { $in: quoteByIds }};
+      var s = Session.get('layoutSearch');
+      if(s) filters['profile.name'] = { $regex: s, $options: "i" };
+
+      return Meteor.users.find(filters, { sort: { 'profile.name': 1 } });
     }
   });
 
