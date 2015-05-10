@@ -184,6 +184,7 @@ html, body {
 
 .createbtn {
   padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .create .groupname {
@@ -203,7 +204,7 @@ html, body {
 .search {
   margin: 5px;
   padding: 5px;
-  width: 95%;
+  width: 94%;
   background-color: #F3F3F3;
   color: #BDBDBD;
   text-align: center;
@@ -265,6 +266,7 @@ html, body {
 }
 
 .toolbar {
+  z-index: 100;
   clear: both;
   height: 40px;
   padding-top: 20px;

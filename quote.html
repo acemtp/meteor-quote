@@ -67,7 +67,8 @@
       <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
       <div>Who said that?</div>
     </div>
-    <div class="scrollable who-wrapper">
+    <div class="scrollable">
+      <div style="height: 60px"></div>
       {{> search}}
       <h2>Last quoted</h2>
       {{#each lastQuoted}}
@@ -88,7 +89,8 @@
       <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
       <div>Share with a group</div>
     </div>
-    <div class="groups-wrapper">
+    <div class="scrollable">
+      <div style="height: 60px"></div>
       {{#each groups}}
         <div class="group">
           <div class="image">
@@ -116,7 +118,8 @@
       <div>Create a new group</div>
       <a class="next" href="#"><i class="fa fa-check"></i></a>
     </div>
-    <div class="create-wrapper">
+    <div class="scrollable">
+      <div style="height: 60px"></div>
       <input class="groupname" type="text" placeholder="Enter group name">
       {{> search}}
       {{#each users}}
