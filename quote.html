@@ -99,7 +99,7 @@
         </div>
       {{/each}}
       <div class="create-body">
-        <a class="create" href="#">Create a new group</a>
+        <a class="create createbtn" href="#">Create a new group</a>
       </div>
     </div>
   </div>
@@ -112,15 +112,17 @@
       <div>Create a new group</div>
       <a class="next" href="#"><i class="fa fa-check"></i></a>
     </div>
-    <input class="groupname" type="text" placeholder="Enter group name">
-    {{> search}}
-    {{#each users}}
-      <div class="user">
-        <img src="http://placehold.it/100x100">
-        <span class="name">{{profile.name}}</span>
-        <span class="check {{#if selected}}active{{/if}}"><i class="fa fa-check"></i></span>
-      </div>
-    {{/each}}
+    <div class="create-wrapper">
+      <input class="groupname" type="text" placeholder="Enter group name">
+      {{> search}}
+      {{#each users}}
+        <div class="user">
+          <img src="http://placehold.it/100x100">
+          <span class="name">{{profile.name}}</span>
+          <span class="check {{#if selected}}active{{/if}}"><i class="fa fa-check"></i></span>
+        </div>
+      {{/each}}
+    </div>
   </div>
 </template>
 

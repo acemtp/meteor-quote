@@ -140,7 +140,7 @@ html, body {
   /*background-color: rgba(255, 255, 255, 0.7);*/
   background-color: rgba(237, 237, 237, 0.78);
   border-radius: 8px;
-  position: fixed;
+/*  position: fixed;*/
   bottom: 15px;
   right: 15px;
   width: 50px;
@@ -157,7 +157,7 @@ html, body {
   /*background-color: rgba(255, 255, 255, 0.7);*/
   background-color: rgba(237, 237, 237, 0.78);
   border-radius: 8px;
-  position: fixed;
+/*  position: fixed;*/
   bottom: 15px;
   left: 15px;
   width: 50px;
@@ -182,7 +182,7 @@ html, body {
 
 /* create */
 
-.create {
+.createbtn {
   padding-top: 60px;
 }
 
@@ -344,7 +344,7 @@ html, body {
   padding: 0 20px;
 }
 
-.groups-wrapper {
+.groups-wrapper, .create-wrapper {
   margin-top: 60px;
 }
 
