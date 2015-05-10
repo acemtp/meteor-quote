@@ -67,8 +67,12 @@
       <a class="back" href="#" data-transition-out="slideRightOut" data-transition-in="slideRightIn"><i class="fa fa-chevron-left"></i></a>
       <div>Who said that?</div>
     </div>
-    <div class="scrollable">
+    <div class="scrollable who-wrapper">
       {{> search}}
+      <h2>Last quoted</h2>
+      {{#each lastQuoted}}
+        <div class="user"><img src="{{profile.picture}}"><span class="name">{{profile.name}}</span></div>
+      {{/each}}
       <h2>Facebook Friends</h2>
       {{#each users}}
         <div class="user"><img src="{{profile.picture}}"><span class="name">{{profile.name}}</span></div>
